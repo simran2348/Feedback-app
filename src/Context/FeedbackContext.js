@@ -26,7 +26,7 @@ export const FeedbackProvider = ({ children }) => {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete?')) {
-      await fetch(`/feedback/${id}`, {
+      await fetch(`http://localhost:5000/feedback/${id}`, {
         method: 'DELETE'
       })
 
@@ -56,7 +56,7 @@ export const FeedbackProvider = ({ children }) => {
   }
 
   const handleUpdate = async (id, updItem) => {
-    const response = await fetch(`/feedback/${id}`, {
+    const response = await fetch(`http://localhost:5000/sfeedback/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
