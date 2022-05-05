@@ -6,7 +6,8 @@ import { useContext } from 'react'
 import FeedbackContext from '../Context/FeedbackContext'
 
 function FeedbackForm() {
-  const { addFeedback, feedbackEdit } = useContext(FeedbackContext)
+  const { addFeedback, feedbackEdit, handleUpdate } =
+    useContext(FeedbackContext)
 
   useEffect(() => {
     if (feedbackEdit.edit) {
@@ -19,33 +20,40 @@ function FeedbackForm() {
 
   const [text, setText] = useState('')
   const [btnDisabled, setBtnDisabled] = useState(true)
-  const [rating, setRating] = useState(true)
+  const [rating, setRating] = useState(10)
   const [message, setMessage] = useState('')
 
-  const handleTextChange = (event) => {
-    if (text === '') {
+  const handleTextChange = ({ target: { value } }) => {
+    if (value === '') {
       setBtnDisabled(true)
       setMessage(null)
-    } else if (text !== '' && text.trim().length <= 10) {
+    } else if (value.trim().length <= 10) {
       setBtnDisabled(true)
       setMessage('Text must be atleast 10 characters')
     } else {
-      setMessage('')
+      setMessage(null)
       setBtnDisabled(false)
     }
-    setText(event.target.value)
+    setText(value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (text.trim().length > 10) {
       const newFeedback = {
-        text: text,
+        text,
         rating
       }
 
-      addFeedback(newFeedback)
+      console.log(feedbackEdit)
+
+      if (feedbackEdit.edit === true) {
+        handleUpdate(feedbackEdit.item.id, newFeedback)
+      } else {
+        addFeedback(newFeedback)
+      }
       setText('')
+      setRating(10)
       setBtnDisabled(true)
     }
   }
@@ -54,7 +62,7 @@ function FeedbackForm() {
     <Card>
       <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
-        <RatingSelect select={(rating) => setRating(rating)} />
+        <RatingSelect select={setRating} selected={rating} />
         <div className='input-group'>
           <input
             type={'text'}
