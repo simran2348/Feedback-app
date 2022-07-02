@@ -9,26 +9,6 @@
       "id": 2,
       "rating": 9,
       "text": "this is backend 2"
-    },
-    {
-      "id": 3,
-      "rating": 8,
-      "text": "this is backend 3"
-    },
-    {
-      "text": "this is an updated test",
-      "rating": 9,
-      "id": 4
-    },
-    {
-      "text": "this is to check dooublr",
-      "rating": 6,
-      "id": 5
-    },
-    {
-      "text": "create a new one",
-      "rating": 4,
-      "id": 6
     }
   ]
 }
