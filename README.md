@@ -1,6 +1,6 @@
 # Feedback-App
 
-This app allows users to add, update and delete feedback. It uses a mock REST api with json-server.
+> This app allows users to add, update and delete feedback. It uses a mock REST api with json-server.
 
 ## Tech Stack
 
