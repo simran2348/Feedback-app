@@ -1,14 +1,9 @@
 {
   "feedback": [
     {
-      "id": 1,
+      "text": "you provide good service",
       "rating": 10,
-      "text": "this is backend 1"
-    },
-    {
-      "id": 2,
-      "rating": 9,
-      "text": "this is backend 2"
+      "id": 1
     }
   ]
 }
